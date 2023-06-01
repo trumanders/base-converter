@@ -73,7 +73,7 @@ bool isValidBaseInput(string num, int fromBase) {
         if (ch < 48) {                        
             isValid = false;
         }
-        if (fromBase <= 10 && (ch >= 58)) {
+        if (fromBase <= 10 && (ch - 48 > fromBase)) {
             isValid = false;
         }
         if (fromBase >= 11 && ((ch >= 58 && ch <= 64) || (ch > 65 + (fromBase - 11)))) {
@@ -84,7 +84,8 @@ bool isValidBaseInput(string num, int fromBase) {
         }
     }
     if (!isValid) {
-        cout << "This is not a valid " << fromBase << " number." << endl;
+        cout << "This is not a valid base-" << fromBase << " number." << endl;
+        return false;
     }
     return true;
 }
